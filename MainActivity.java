@@ -64,7 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
             final DataItem item = getItem(position);
 
-            TextView courseNameTextView = convertView.findViewById(R.id.courseNameTextView);
+            TextView courseNameTextView = convertView.findViewById(R.id.courseNameTextView
+            );
             courseNameTextView.setText(item.getcourseName());
 
             Button sendButton = convertView.findViewById(R.id.sendButton);
@@ -145,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
                 connection.setDoOutput(true);
 
                 // Construct the data to send
-                String dataToSend = "courseName=" + item.courseName();
+                String dataToSend = "courseName=" + item.getcourseName();
 
                 OutputStream outputStream = connection.getOutputStream();
                 outputStream.write(dataToSend.getBytes());
