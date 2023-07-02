@@ -1,4 +1,4 @@
-package com.example.korangpunya;
+package com.example.korangpunyafile;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
             final DataItem item = getItem(position);
 
-            TextView carPlateTextView = convertView.findViewById(R.id.carPlateTextView);
-            carPlateTextView.setText(item.getCarPlate());
+            TextView courseNameTextView = convertView.findViewById(R.id.courseNameTextView);
+            courseNameTextView.setText(item.getcourseName());
 
             Button sendButton = convertView.findViewById(R.id.sendButton);
             sendButton.setOnClickListener(new View.OnClickListener() {
@@ -118,9 +118,9 @@ public class MainActivity extends AppCompatActivity {
                     JSONArray jsonArray = new JSONArray(result);
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject itemObject = jsonArray.getJSONObject(i);
-                        String carPlate = itemObject.getString("car_plate");
+                        String courseName = itemObject.getString("courseName");
 
-                        DataItem item = new DataItem(carPlate);
+                        DataItem item = new DataItem(courseName);
                         data.add(item);
                     }
                     adapter.notifyDataSetChanged();
@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
                 connection.setDoOutput(true);
 
                 // Construct the data to send
-                String dataToSend = "carPlate=" + item.getCarPlate();
+                String dataToSend = "courseName=" + item.courseName();
 
                 OutputStream outputStream = connection.getOutputStream();
                 outputStream.write(dataToSend.getBytes());
@@ -189,17 +189,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static class DataItem {
-        private String carPlate;
-        public DataItem(String carPlate) {
-            this.carPlate = carPlate;
+        private String courseName;
+        public DataItem(String courseName) {
+            this.courseName = courseName;
         }
 
-        public String getCarPlate() {
-            return carPlate;
+        public String getcourseName() {
+            return courseName;
         }
 
-        public void setCarPlate(String carPlate) {
-            this.carPlate = carPlate;
+        public void setcourseName(String courseName) {
+            this.courseName = courseName;
         }
     }
 }
